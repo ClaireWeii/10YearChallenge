@@ -15,12 +15,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var autoPlaySwitch: UISwitch!
     
+    //讀取系統時間
     let dateFormatter = DateFormatter()
     
+    //照片 Array
     let img = [
     "201709", "201711", "201712", "201801", "201802", "201803", "201805", "201806", "201807", "201808", "201809", "201812", "201905", "201909", "201912", "202001", "202004", "202012", "202104", "202106", "202112", "202201", "202207"
     ]
     
+    //標題 Array
     let label = [
         "小Dobby來到這世界了", "第一次跟著媽媽回家", "第一次生病看醫生", "第一次靠著抱枕睡著", "第一次拍照看鏡頭", "第一次立起耳朵", "第一次玩球", "第一次高興到咪咪眼", "第一次笑到變成海狗的樣子", "第一次表演啾咪的表情", "第一次出遠門", "第一次過聖誕節", "第一次被拍到跟媽媽握手的照片", "第一次靠著媽媽賴床", "第一次打扮得像個紳士", "第一次吃草莓", "第一次靠著玩具睡著", "第一次收到聖誕禮盒", "第一次為戴頭套而感到憂鬱", "第一次自己乖乖的等看醫生", "第一次泡牛奶浴", "第一次讓媽媽拍到傻笑的照片", "第一次吹冷氣等到蓋棉被"]
     
@@ -29,118 +32,113 @@ class ViewController: UIViewController {
     var labelnum = 0
     var slidernum = 0
     var timer:Timer?
-    var yearValue = 2017
-    var monthValue = 1
-    var dayValue = 1
     var sliderValue: Float = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         background()
-        //datePicker.locale = Locale(identifier: "zh_TW")
         dateFormatter.dateFormat = "yyyy/MM/dd"
     }
     
     @IBAction func changeDatePicker(_ sender: UIDatePicker) {
+        //取得 datePicker 的日期
         let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: datePicker.date)
+        //取得 datePicker 的年、月、日
         var datePickeryear = dateComponents.year!
         var datePickermonth = dateComponents.month!
         var datePickerday = dateComponents.day!
-        
-        yearValue = datePickeryear
-        monthValue = datePickermonth
-        dayValue = datePickerday
-        
-        if yearValue == 2017 && monthValue == 9 && dayValue == 23{
+
+        //因為只有特定日期才有照片及標題，因此用 if else 指定日期並設定照片及標題，同時也須將讓 Slider 同步
+        if datePickeryear == 2017 && datePickermonth == 9 && datePickerday == 23{
             myImage.image = UIImage(named: img[0])
             titleLabel.text = label[0]
             slider.value = 0
-        }else if yearValue == 2017 && monthValue == 11 && dayValue == 23{
+        }else if datePickeryear == 2017 && datePickermonth == 11 && datePickerday == 23{
             myImage.image = UIImage(named: img[1])
             titleLabel.text = label[1]
             slider.value = 1
-        }else if yearValue == 2017 && monthValue == 12 && dayValue == 4{
+        }else if datePickeryear == 2017 && datePickermonth == 12 && datePickerday == 4{
             myImage.image = UIImage(named: img[2])
             titleLabel.text = label[2]
             slider.value = 2
-        }else if yearValue == 2018 && monthValue == 1 && dayValue == 1{
+        }else if datePickeryear == 2018 && datePickermonth == 1 && datePickerday == 1{
             myImage.image = UIImage(named: img[3])
             titleLabel.text = label[3]
             slider.value = 3
-        }else if yearValue == 2018 && monthValue == 2 && dayValue == 28{
+        }else if datePickeryear == 2018 && datePickermonth == 2 && datePickerday == 28{
             myImage.image = UIImage(named: img[4])
             titleLabel.text = label[4]
             slider.value = 4
-        }else if yearValue == 2018 && monthValue == 3 && dayValue == 13{
+        }else if datePickeryear == 2018 && datePickermonth == 3 && datePickerday == 13{
             myImage.image = UIImage(named: img[5])
             titleLabel.text = label[5]
             slider.value = 5
-        }else if yearValue == 2018 && monthValue == 4 && dayValue == 14{
+        }else if datePickeryear == 2018 && datePickermonth == 4 && datePickerday == 14{
             myImage.image = UIImage(named: img[6])
             titleLabel.text = label[6]
             slider.value = 6
-        }else if yearValue == 2018 && monthValue == 5 && dayValue == 20{
+        }else if datePickeryear == 2018 && datePickermonth == 5 && datePickerday == 20{
             myImage.image = UIImage(named: img[7])
             titleLabel.text = label[7]
             slider.value = 7
-        }else if yearValue == 2018 && monthValue == 7 && dayValue == 29{
+        }else if datePickeryear == 2018 && datePickermonth == 7 && datePickerday == 29{
             myImage.image = UIImage(named: img[8])
             titleLabel.text = label[8]
             slider.value = 8
-        }else if yearValue == 2018 && monthValue == 8 && dayValue == 26{
+        }else if datePickeryear == 2018 && datePickermonth == 8 && datePickerday == 26{
             myImage.image = UIImage(named: img[9])
             titleLabel.text = label[9]
             slider.value = 9
-        }else if yearValue == 2018 && monthValue == 9 && dayValue == 23{
+        }else if datePickeryear == 2018 && datePickermonth == 9 && datePickerday == 23{
             myImage.image = UIImage(named: img[10])
             titleLabel.text = label[10]
             slider.value = 10
-        }else if yearValue == 2018 && monthValue == 12 && dayValue == 25{
+        }else if datePickeryear == 2018 && datePickermonth == 12 && datePickerday == 25{
             myImage.image = UIImage(named: img[11])
             titleLabel.text = label[11]
             slider.value = 11
-        }else if yearValue == 2019 && monthValue == 5 && dayValue == 31{
+        }else if datePickeryear == 2019 && datePickermonth == 5 && datePickerday == 31{
             myImage.image = UIImage(named: img[12])
             titleLabel.text = label[12]
             slider.value = 12
-        }else if yearValue == 2019 && monthValue == 9 && dayValue == 20{
+        }else if datePickeryear == 2019 && datePickermonth == 9 && datePickerday == 20{
             myImage.image = UIImage(named: img[13])
             titleLabel.text = label[13]
             slider.value = 13
-        }else if yearValue == 2019 && monthValue == 12 && dayValue == 31{
+        }else if datePickeryear == 2019 && datePickermonth == 12 && datePickerday == 31{
             myImage.image = UIImage(named: img[14])
             titleLabel.text = label[14]
             slider.value = 14
-        }else if yearValue == 2020 && monthValue == 1 && dayValue == 15{
+        }else if datePickeryear == 2020 && datePickermonth == 1 && datePickerday == 15{
             myImage.image = UIImage(named: img[15])
             titleLabel.text = label[15]
             slider.value = 15
-        }else if yearValue == 2020 && monthValue == 4 && dayValue == 9{
+        }else if datePickeryear == 2020 && datePickermonth == 4 && datePickerday == 9{
             myImage.image = UIImage(named: img[16])
             titleLabel.text = label[16]
             slider.value = 16
-        }else if yearValue == 2020 && monthValue == 12 && dayValue == 25{
+        }else if datePickeryear == 2020 && datePickermonth == 12 && datePickerday == 25{
             myImage.image = UIImage(named: img[17])
             titleLabel.text = label[17]
             slider.value = 17
-        }else if yearValue == 2021 && monthValue == 4 && dayValue == 27{
+        }else if datePickeryear == 2021 && datePickermonth == 4 && datePickerday == 27{
             myImage.image = UIImage(named: img[18])
             titleLabel.text = label[18]
             slider.value = 18
-        }else if yearValue == 2021 && monthValue == 6 && dayValue == 23{
+        }else if datePickeryear == 2021 && datePickermonth == 6 && datePickerday == 23{
             myImage.image = UIImage(named: img[19])
             titleLabel.text = label[19]
             slider.value = 19
-        }else if yearValue == 2021 && monthValue == 12 && dayValue == 24{
+        }else if datePickeryear == 2021 && datePickermonth == 12 && datePickerday == 24{
             myImage.image = UIImage(named: img[20])
             titleLabel.text = label[20]
             slider.value = 20
-        }else if yearValue == 2022 && monthValue == 1 && dayValue == 1{
+        }else if datePickeryear == 2022 && datePickermonth == 1 && datePickerday == 1{
             myImage.image = UIImage(named: img[21])
             titleLabel.text = label[21]
             slider.value = 21
-        }else if yearValue == 2022 && monthValue == 7 && dayValue == 22{
+        }else if datePickeryear == 2022 && datePickermonth == 7 && datePickerday == 22{
             myImage.image = UIImage(named: img[22])
             titleLabel.text = label[22]
             slider.value = 22
@@ -170,13 +168,7 @@ class ViewController: UIViewController {
         }
     }
     
-//    func sync(){
-//        if monthValue <= 9{
-//            myImage.image = UIImage(named: "\(yearValue)0\(monthValue)")
-//            titleLabel.text = label[\(yearValue)0\(monthValue)]
-//        }
-//    }
-    
+    //利用 switch-case 與 image array 取元件的對應做連續數值判斷
     func chooseImgnLabel(num1 : Int){
         switch num1{
         case 0:
@@ -228,12 +220,15 @@ class ViewController: UIViewController {
         default:
             dateString = "2017/09/23"
         }
+        //使 datePicker 判斷的日期為 dateString 內的字串
         let date = dateFormatter.date(from: dateString)
         datePicker.date = date!
         
     }
     
+    //比對陣列內的照片及標題
     func compare(){
+        //如果比對到最後一照片/標題時則從第一項開始，不是則繼續跑照片/標題 num+=1
         if imgnum >= img.count,labelnum >= label.count{
             imgnum = 0
             chooseImgnLabel(num1: imgnum)
@@ -247,12 +242,14 @@ class ViewController: UIViewController {
             chooseImgnLabel(num1: labelnum)
             titleLabel.text = label[labelnum]
         }
+        //連動Slider
         slider.value = Float(imgnum)
         imgnum += 1
         slider.value = Float(labelnum)
         labelnum += 1
     }
     
+    //每次執行 compare 的時間（自動切換照片/標題的時間）
     func time(){
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {(timer) in self.compare()})
     }
