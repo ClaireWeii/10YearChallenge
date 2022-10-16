@@ -13,6 +13,7 @@
 		2B839CEA28E9E00200610724 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B839CE828E9E00200610724 /* Main.storyboard */; };
 		2B839CEC28E9E00400610724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B839CEB28E9E00400610724 /* Assets.xcassets */; };
 		2B839CEF28E9E00400610724 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B839CED28E9E00400610724 /* LaunchScreen.storyboard */; };
+		2B839CF728FBEA6700610724 /* your-dog-loves-you.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2B839CF628FBEA6700610724 /* your-dog-loves-you.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2B839CEB28E9E00400610724 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B839CEE28E9E00400610724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B839CF028E9E00400610724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2B839CF628FBEA6700610724 /* your-dog-loves-you.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "your-dog-loves-you.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				2B839CEB28E9E00400610724 /* Assets.xcassets */,
 				2B839CED28E9E00400610724 /* LaunchScreen.storyboard */,
 				2B839CF028E9E00400610724 /* Info.plist */,
+				2B839CF628FBEA6700610724 /* your-dog-loves-you.mp3 */,
 			);
 			path = 10YearChallenge;
 			sourceTree = "<group>";
@@ -127,6 +130,7 @@
 			files = (
 				2B839CEF28E9E00400610724 /* LaunchScreen.storyboard in Resources */,
 				2B839CEC28E9E00400610724 /* Assets.xcassets in Resources */,
+				2B839CF728FBEA6700610724 /* your-dog-loves-you.mp3 in Resources */,
 				2B839CEA28E9E00200610724 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
 
@@ -33,12 +34,17 @@ class ViewController: UIViewController {
     var slidernum = 0
     var timer:Timer?
     var sliderValue: Float = 0
+    let player = AVPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         background()
         dateFormatter.dateFormat = "yyyy/MM/dd"
+        let fileUrl = Bundle.main.url(forResource: "your-dog-loves-you", withExtension: "mp3")!
+        let playerItem = AVPlayerItem(url: fileUrl)
+        player.replaceCurrentItem(with: playerItem)
+        player.play()
     }
     
     @IBAction func changeDatePicker(_ sender: UIDatePicker) {
@@ -251,7 +257,7 @@ class ViewController: UIViewController {
     
     //每次執行 compare 的時間（自動切換照片/標題的時間）
     func time(){
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {(timer) in self.compare()})
+        timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: {(timer) in self.compare()})
     }
     
     func background(){
