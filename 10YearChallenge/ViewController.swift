@@ -34,6 +34,7 @@ class ViewController: UIViewController {
     var slidernum = 0
     var timer:Timer?
     var sliderValue: Float = 0
+    
     let player = AVPlayer()
     
     override func viewDidLoad() {
@@ -41,9 +42,15 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         background()
         dateFormatter.dateFormat = "yyyy/MM/dd"
+        
+        //產生音樂在 App 裡路徑的 URL
+        //利用 Bundle.main 取得 App 主要的 Bundle，也就是 App 本身的資料夾，透過呼叫 function url(forResource:withExtension:) 取得音檔在資料夾裡的 URL，forResource 傳入檔名，withExtension 傳入附檔名
         let fileUrl = Bundle.main.url(forResource: "your-dog-loves-you", withExtension: "mp3")!
+        //利用 AVPlayerItem 生成要播放的音樂
         let playerItem = AVPlayerItem(url: fileUrl)
+        //設定 player 要播放的 AVPlayerItem
         player.replaceCurrentItem(with: playerItem)
+        // player開始播放音樂
         player.play()
     }
     
